@@ -39,9 +39,9 @@ const AbilityName = () => {
             <AbilityEffect effect={ability?.effect_entries[1].effect} />
             <h2 className="text-[#CCCCCC] font-extrabold mt-4">Pokemon who can get {ability?.name} ability</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 my-4">
-                    {pokemon.map((pkmn) => {
+                    {pokemon.map((pkmn, index) => {
                         return(
-                            <div className="w-8/12 md:w-10/12 mx-auto m-2">
+                            <div className="w-8/12 md:w-10/12 mx-auto m-2" key={index}>
                                 <Link href={`/pokemon/${pkmn.name}`}>
                                     <Card types={pkmn?.types} img={pkmn?.sprites.front_default} name={pkmn?.name}/>
                                 </Link>

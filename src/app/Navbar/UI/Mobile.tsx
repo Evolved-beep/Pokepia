@@ -16,9 +16,9 @@ const Mobile = () => {
     return(
         <div className="fixed mb-4 h-16 rounded-full bottom-0 w-10/12 z-50 bg-[#F3F3F3] flex flex-row justify-center items-center ">
             <ul className="flex flex-row">
-                {MobileLinkArray.map((link) => {
+                {MobileLinkArray.map((link,index) => {
                     return(
-                        <Link href={link.Link}>
+                        <Link href={link.Link} key={index}>
                             <li className="mr-4">{link.content}</li>
                         </Link>
                     )

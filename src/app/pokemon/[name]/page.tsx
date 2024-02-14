@@ -45,9 +45,9 @@ const PokemonDetail = () => {
                 <div className="bg-[#B6F1F1] rounded-lg lg:flex lg:flex-col lg:justify-center lg:items-center p-4">
                     <h1 className="mb-2.5 text-xl">Type:</h1>
                     <div className="flex">
-                    {pokemon?.types.map((type:Type) => {
+                    {pokemon?.types.map((type:Type, index:any) => {
                             return(
-                                <Types types={type.type.name} />
+                                <Types types={type.type.name} key={index} />
                             )
                         })}
                     </div>

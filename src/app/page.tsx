@@ -26,7 +26,7 @@ export default function Home() {
           {pokemonData.pokemon.map((pkmn,index) => {
             if(pokemonData.pokemon.length === index + 1){
               return(
-                <div className="w-full m-3 flex place-self-center flex-wrap md:w-10/12" ref={lastCardRef}>
+                <div className="w-full m-3 flex place-self-center flex-wrap md:w-10/12" ref={lastCardRef} key={index}>
                 <Card
                   name={pkmn.name} 
                   img={pkmn.sprites.front_default}
@@ -36,7 +36,7 @@ export default function Home() {
               )
             } else {
               return(
-                <div className="w-full m-3 flex place-self-center flex-wrap md:w-10/12">
+                <div className="w-full m-3 flex place-self-center flex-wrap md:w-10/12" key={index}>
                   <Card
                     name={pkmn.name} 
                     img={pkmn.sprites.front_default}

@@ -41,9 +41,9 @@ const Details = ({experience, weight, height, id, abilities}: IDetail) => {
                     </li>
                     <li className="flex flex-col lg:mb-2 [&>*:nth-child(1)]:text-[#FFFFFF]">
                         <span className="">Ability:</span>
-                        {abilities?.map((ab) => {
+                        {abilities?.map((ab, index) => {
                             return(
-                                <Link href={`/ability/${ab.ability.name}`}>
+                                <Link href={`/ability/${ab.ability.name}`} key={index}>
                                     <li className="first-letter:uppercase text-[#212121] text-lg">{ab.ability.name}</li>
                                 </Link>
                             )

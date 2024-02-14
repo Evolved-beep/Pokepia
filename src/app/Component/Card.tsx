@@ -19,9 +19,9 @@ const Card = ({name,img,types}:Pokemon) => {
                 <h1 className="text-sm md:text-base lg:text-lg first-letter:uppercase font-extrabold text-[azure]">{name}</h1>
                 <img src={img} className="h-32 w-32" alt={name} />
                 <div className="flex flex-row">
-                {types.map((type: Type) =>{
+                {types.map((type: Type, index:any) =>{
                     return(
-                        <Types types={type.type.name} />
+                        <Types types={type.type.name} key={index} />
                             )
                         })}
                 </div>
