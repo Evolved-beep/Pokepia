@@ -1,6 +1,6 @@
 "use client"
 
-import Types from "@/app/Navbar/UI/types"
+import Types from "@/app/Component/types"
 import { useParams } from "next/navigation"
 import { useEffect, useState } from "react"
 import Effect from "../component/Effect"

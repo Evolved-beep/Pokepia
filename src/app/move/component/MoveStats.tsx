@@ -1,4 +1,4 @@
-import Types from "@/app/Navbar/UI/types"
+import Types from "@/app/Component/types"
 
 interface IStats {
     accuracy: number,

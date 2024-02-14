@@ -44,7 +44,7 @@ const Details = ({experience, weight, height, id, abilities}: IDetail) => {
                         {abilities?.map((ab) => {
                             return(
                                 <Link href={`/ability/${ab.ability.name}`}>
-                                    <li className="first-letter:uppercase text-[#212121] lg:mb-2 text-lg">{ab.ability.name}</li>
+                                    <li className="first-letter:uppercase text-[#212121] text-lg">{ab.ability.name}</li>
                                 </Link>
                             )
                         })}

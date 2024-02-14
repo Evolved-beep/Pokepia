@@ -3,7 +3,7 @@ import { useParams } from "next/navigation"
 import { useEffect, useState } from "react"
 import Barchar from "./Component/Barchart"
 import Details from "./Component/Details"
-import Types from "@/app/Navbar/UI/types"
+import Types from "@/app/Component/types"
 
 interface Type {
     slot: number;
@@ -21,14 +21,13 @@ const PokemonDetail = () => {
             setPokemon(data)
         }
         PokemonByName()
-    },[])
-    console.log(pokemon);
+    },[params])
     return(
         <section className="flex justify-center items-center flex-col bg-[#FFFFFF] mx-auto">
             <div className=" my-4 flex flex-col w-10/12 lg:w-8/12 mx-auto">
                 <h1 className="text-center text-2xl font-extrabold first-letter:uppercase my-6">{pokemon?.name}</h1>
                 <div className="bg-[#F2F2F2] h-[250px] rounded-lg w-full flex items-center justify-center">
-                    <img src={pokemon?.sprites.front_default} className="h-[250px]" alt="" />
+                    <img src={pokemon?.sprites.front_default} className="h-[250px]" alt={pokemon?.name} />
                 </div>
                 <div className="my-4 bg-[#A4A4A4] rounded-lg">
                     <Barchar stats={pokemon?.stats}/>

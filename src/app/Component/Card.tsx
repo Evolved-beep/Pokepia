@@ -1,5 +1,5 @@
 import Link from "next/link"
-import Types from "../Navbar/UI/types"
+import Types from "./types";
 
 interface Type {
     slot: number;
@@ -17,7 +17,7 @@ const Card = ({name,img,types}:Pokemon) => {
         <Link className="w-full" href={`/pokemon/${name}`}>
             <article className="text-center border flex justify-center items-center rounded-lg flex-col px-10 py-6">
                 <h1 className="text-sm md:text-base lg:text-lg first-letter:uppercase font-extrabold text-[azure]">{name}</h1>
-                <img src={img} className="h-32 w-32" alt="" />
+                <img src={img} className="h-32 w-32" alt={name} />
                 <div className="flex flex-row">
                 {types.map((type: Type) =>{
                     return(

@@ -1,7 +1,7 @@
 "use client"
 import Link from "next/link";
 import useMove from "../hooks/useMove"
-import Types from "../Navbar/UI/types";
+import Types from "../Component/types";
 import { useRef, useState, useEffect } from "react";
 
 const Move = () => {
@@ -27,7 +27,7 @@ const Move = () => {
             {pokemonMove.move.map((moves, index) => {
                 if(pokemonMove.move.length === index + 1){
                     return(
-                        <Link href={`/move/${moves.name}`}>
+                        <Link href={`/move/${moves.name}`} key={index}>
                             <div className="p-6 rounded-lg border border-white mb-6 text-[azure] md:text-left md:flex md:items-center" ref={lastMoveRef}>
                                 <div className="md:max-w-[150px] md:w-full md:items-center lg:max-w-[250px] xl:max-w-[350px]">
                                         <h1 className="first-letter:uppercase text-[#5098D6]">{moves.name}</h1>
@@ -41,7 +41,7 @@ const Move = () => {
                     )
                 } else {
                     return(
-                        <Link href={`/move/${moves.name}`}>
+                        <Link href={`/move/${moves.name}`} key={index}>
                             <div className="p-6 rounded-lg border border-white mb-6 text-[azure] md:text-left md:flex md:items-center">
                                 <div className="md:max-w-[150px] md:w-full md:items-center lg:max-w-[250px] xl:max-w-[350px]">
                                         <h1 className="first-letter:uppercase text-[#5098D6]">{moves.name}</h1>

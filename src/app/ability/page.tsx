@@ -26,7 +26,7 @@ const Ability = () => {
             {pokemonAbility.allAbility?.map((ability, index) => {
                 if(pokemonAbility.allAbility?.length === index + 1){
                     return(
-                       <Link href={`/ability/${ability.name}`}>
+                       <Link href={`/ability/${ability.name}`} key={index}>
                            <div className="p-6 rounded-lg border border-white mb-6 text-[azure] md:text-center md:flex md:items-center" ref={lastAbilityRef}>
                                <div className="md:w-full md:items-center">
                                        <h1 className="first-letter:uppercase text-[#5098D6]">{ability.name}</h1>
@@ -37,7 +37,7 @@ const Ability = () => {
                 }
                 else {
                     return(
-                        <Link href={`/ability/${ability.name}`}>
+                        <Link href={`/ability/${ability.name}`} key={index}>
                             <div className="p-6 rounded-lg border border-white mb-6 text-[azure] md:text-center md:flex md:items-center">
                                 <div className="md:w-full md:items-center">
                                         <h1 className="first-letter:uppercase text-[#5098D6]">{ability.name}</h1>

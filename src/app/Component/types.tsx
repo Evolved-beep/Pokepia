@@ -1,5 +1,3 @@
-import types from "tailwindcss"
-
 interface IType {
     types: string
 }
