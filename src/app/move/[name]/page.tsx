@@ -6,22 +6,34 @@ import Effect from "../component/Effect"
 import MoveStats from "../component/MoveStats"
 import Card from "@/app/Component/Card"
 import Link from "next/link"
+import Error from "@/app/Component/Error"
+import Loading from "@/app/UI/Loading"
 
 const MoveByID = () => {
     const params = useParams<{name:string}>()
     const [moveDetail, setMoveDetail] = useState<any>()
     const [pokemon, setPokemon] = useState<Array<any>>([])  
+    const [loading, setLoading] = useState<boolean>(true)
 
     useEffect(() => {
         const MoveByName = async() => {
-            const response = await fetch(`https://pokeapi.co/api/v2/move/${params.name}`)
-            const data = await response.json()
-            setMoveDetail(data)
-            const pokemons: any[] = []
-            data.learned_by_pokemon.forEach((pokemon: { url: string }) => pokemons.push(pokemonByMove(pokemon.url)))
-            Promise.all(pokemons).then((result) => {
-                setPokemon(result)
-            })
+            try {
+                const response = await fetch(`https://pokeapi.co/api/v2/move/${params.name}`)
+                const data = await response.json()
+                setMoveDetail(data)
+                console.log(data);
+                const pokemons: any[] = []
+                data.learned_by_pokemon.forEach((pokemon: { url: string }) => pokemons.push(pokemonByMove(pokemon.url)))
+                Promise.all(pokemons).then((result) => {
+                    setPokemon(result)
+                    setLoading(false)
+                })
+            }
+            catch{
+                return(
+                    <Error />
+                )
+            }
         }
         MoveByName()
         const pokemonByMove = async(url:string) => {
@@ -30,6 +42,18 @@ const MoveByID = () => {
             return data
         }
     },[params])
+
+    if(moveDetail === undefined){
+        return(
+            <Error/>
+        )
+    }
+
+    if(moveDetail && loading === true){
+        return(
+            <Loading />
+        )
+    } else {
         return(
             <section className="text-center my-4 md:text-base lg:text-lg">
                 <h1 className="text-[#CCCCCC] font-extrabold first-letter:uppercase">{moveDetail?.name}</h1>
@@ -54,6 +78,7 @@ const MoveByID = () => {
                 </div>
             </section>
         )
+    }
 }
 
 export default MoveByID

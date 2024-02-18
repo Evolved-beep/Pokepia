@@ -8,6 +8,7 @@ const Move = () => {
     const [url, setUrl] = useState<string>("https://pokeapi.co/api/v2/move")
     const pokemonMove = useMove({url})
     const lastMoveRef = useRef<any>(null)
+    const [search, setSearch] = useState<string>("")
 
     useEffect(() => {
         if(lastMoveRef.current){
@@ -21,10 +22,23 @@ const Move = () => {
             observer.observe(lastMoveRef.current)
         }
     },[pokemonMove])
+
+    const handleSearch = (e:React.ChangeEvent<HTMLInputElement>) => {
+        const userSearch = e.target.value
+        setSearch(userSearch)
+    }    
     return(
         <section className="w-8/12 md:w-full mt-10 mx-auto text-center md:text-base lg:text-lg">
-            <h1 className="text-[#f3f3f3] mb-4 font-extrabold">Moves !</h1>
-            {pokemonMove.move.map((moves, index) => {
+            <div className="my-8">
+                <h1 className="text-[#f3f3f3] mb-4 font-extrabold">Moves !</h1>
+                <input type="text" className="rounded-lg p-2 w-7/12" placeholder="Enter your search" onChange={handleSearch}/>
+            </div>
+            {pokemonMove.move
+            .filter((movement) => {
+                console.log(movement.name);
+                return movement.name.includes(search)
+            })
+            .map((moves, index) => {
                 if(pokemonMove.move.length === index + 1){
                     return(
                         <Link href={`/move/${moves.name}`} key={index}>

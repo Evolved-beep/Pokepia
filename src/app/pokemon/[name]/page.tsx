@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import Barchar from "./Component/Barchart"
 import Details from "./Component/Details"
 import Types from "@/app/Component/types"
+import Error from "@/app/Component/Error"
 
 interface Type {
     slot: number;
@@ -22,8 +23,15 @@ const PokemonDetail = () => {
         }
         PokemonByName()
     },[params])
+
+    if(pokemon === undefined){
+        return(
+            <Error />
+        )
+    }
+
     return(
-        <section className="flex justify-center items-center flex-col bg-[#FFFFFF] mx-auto">
+        <section className="flex justify-center items-center flex-col bg-[#FFFFFF] mx-auto md:my-4 md:rounded-lg">
             <div className=" my-4 flex flex-col w-10/12 lg:w-8/12 mx-auto">
                 <h1 className="text-center text-2xl font-extrabold first-letter:uppercase my-6">{pokemon?.name}</h1>
                 <div className="bg-[#F2F2F2] h-[250px] rounded-lg w-full flex items-center justify-center">

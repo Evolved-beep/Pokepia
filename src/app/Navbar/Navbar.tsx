@@ -4,7 +4,7 @@ import Mobile from "./UI/Mobile"
 const Navbar = () => {
     return(
         <nav className="">
-            <div className="md:hidden flex justify-center items-center mb-4">
+            <div className="md:hidden flex justify-center items-center">
                 <Mobile />
             </div>
             <div className="hidden md:flex items-center h-24 p-6 border-b text-xl justify-between border-white text-[#CCCCCC]">
