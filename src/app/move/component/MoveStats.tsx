@@ -1,7 +1,7 @@
 import Types from "@/app/Component/types"
 
 interface IStats {
-    accuracy: number,
+    accuracy: number | undefined,
     power: number, 
     pp: number,
     damage: string

@@ -14,22 +14,23 @@ interface Type {
 const PokemonDetail = () => {
     const params = useParams<{name:string}>()
     const [pokemon, setPokemon] = useState<any>()
+    const [error, setError] = useState<any>()
 
     useEffect(() => {
         const PokemonByName = async() => {
             const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${params.name}`)
+            setError(response.ok ? false : response.status)
             const data = await response.json()
             setPokemon(data)
         }
         PokemonByName()
     },[params])
 
-    if(pokemon === undefined){
+    if(error){
         return(
             <Error />
         )
     }
-
     return(
         <section className="flex justify-center items-center flex-col bg-[#FFFFFF] mx-auto md:my-4 md:rounded-lg">
             <div className=" my-4 flex flex-col w-10/12 lg:w-8/12 mx-auto">
