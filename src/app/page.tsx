@@ -2,7 +2,6 @@
 import { useEffect, useRef, useState } from "react";
 import Card from "./Component/Card";
 import usePokemon from "./hooks/usePokemon";
-import Input from "./Component/Input";
 
 export default function Home() {
   const [url, setUrl] = useState<string>('https://pokeapi.co/api/v2/pokemon?limit=121&offset=0')
